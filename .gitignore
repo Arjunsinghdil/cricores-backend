@@ -1,0 +1,19 @@
+# Python dependencies
+__pycache__/
+*.pyc
+venv/
+env/
+.env
+
+# Secrets
+serviceAccountKey.json
+*.pem
+
+# IDE / System
+.vscode/
+.idea/
+.DS_Store
+
+# Node (if combining)
+node_modules/
+package-lock.json
