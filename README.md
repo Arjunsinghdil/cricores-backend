@@ -2,10 +2,10 @@
 
 A production-grade backend implementation for real-time cricket analytics, predictive modeling, and user engagement. This service acts as the central intelligence hub, bridging third-party cricket data with Firestore persistence and high-performance caching.
 
-## 🚀 Overview
+## Overview
 The CricOres backend is designed for high reliability and scalability. It handles data aggregation from multiple cricket APIs, implements a robust caching layer to minimize external latency and cost, and manages structured data storage in Google Cloud Firestore.
 
-## 🏗️ Architecture & System Design
+## Architecture & System Design
 The system follows a microservices-inspired architecture with a focus on decoupling data ingestion from presentation.
 
 ```mermaid
@@ -26,21 +26,21 @@ graph TD
 - **Security**: Python-Dotenv / Environment-based configuration
 - **Performance**: Layered Caching System (In-memory + NoSQL)
 
-## 🛠️ Data Flow & Logic
+## Data Flow & Logic
 1. **Aggregated Fetching**: The API centralizes requests to external providers (CricAPI/Sportmonks), reducing API key exposure and client-side complexity.
 2. **Intelligent Caching**: Implements a TTL-based caching strategy. Live match data is cached for 30 seconds, while historical data persists longer to reduce API quota consumption by up to 80%.
 3. **Structured Modeling**: Transforms raw third-party JSON into optimized, business-domain models (e.g., Win Probability, Fantasy Impact) before reaching the UI.
 
-## 🧠 Engineering Challenges Solved
+## Engineering Challenges Solved
 - **API Rate Limiting**: Solved by implementing a central caching proxy in Firestore, ensuring multiple concurrent users don't trigger external rate limits.
 - **System Reliability**: Integrated comprehensive error wrappers and fallbacks for third-party service outages.
 - **Environment Security**: Migrated from hardcoded secrets to a strict environment-based configuration system.
 
-## 📈 Production Learnings
+## Production Learnings
 - **Offline Resilience**: Learned the importance of maintaining a "stale" cache when external providers are down, ensuring the UI remains functional.
 - **Logging vs. Debugging**: Implemented structured logging in development to trace asynchronous fetch failures in production environments.
 
-## 📂 Folder Structure
+## Folder Structure
 ```text
 cricores-backend/
 ├── main.py              # FastAPI entry point & API routes
@@ -52,7 +52,7 @@ cricores-backend/
 └── README.md            # You are here
 ```
 
-## ⚙️ Local Development
+## Local Development
 1. **Clone the repo**
 2. **Install dependencies**:
    ```bash
@@ -70,7 +70,7 @@ cricores-backend/
    uvicorn main:app --reload
    ```
 
-## 🔐 Deployment Notes
+## Deployment Notes
 - **Infrastructure**: Optimized for deployment on **AWS App Runner**, **Google Cloud Run**, or **Vercel Functions**.
 - **CI/CD**: Recommended GitHub Actions pipeline for linting, testing, and automated deployment.
 - **Security**: Ensure Firestore rules are locked down to only allow authorized service account access.
